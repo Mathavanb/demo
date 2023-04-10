@@ -23,6 +23,22 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.cache_classes = false
+
+  config.action_mailer.delivery_method = :smtp
+  host = 'http://127.0.0.1:3000/' #replace with your own url
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "mathavandm123@gmail.com",
+    :password             => "vtwycqlhbdiwguxw",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
